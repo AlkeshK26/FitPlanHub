@@ -1,210 +1,69 @@
-FitPlanHub 
-FitPlanHub is a full-stack MERN (MongoDB, Express, React, Node.js) web application designed to bridge the gap between Fitness Trainers and Health Enthusiasts. It features a robust ecosystem where trainers can create and monetize workout plans, while users can discover, subscribe to, and track premium fitness content.
 
- Project Overview
-The application is built with a modern, aesthetic UI using Tailwind CSS and Glassmorphism design principles. It features role-based authentication, dynamic content locking (subscription-based access), and a comprehensive dashboard for trainers to track their earnings and subscribers.
 
-Key Features
- Frontend (User Experience)
-Aesthetic Landing Page: High-quality visuals, glassmorphism effects, and a responsive grid layout showcasing features.
+# 🏋️‍♂️ FitPlanHub: Premium Fitness Subscription Ecosystem
 
-Role-Based Authentication: Secure Login/Signup separation for Users and Trainers.
+**FitPlanHub** is a high-performance, subscription-based fitness marketplace designed to empower the creator economy. It seamlessly connects professional fitness trainers with health enthusiasts through a secure, role-based platform, enabling trainers to monetize their custom workout routines and nutrition guides.
 
-Explore Feed: Users can browse various workout plans created by different trainers.
+---
 
-Content Locking System 🔒: Detailed workout schedules and diet charts are hidden until the user subscribes to the specific plan.
+## 🎯 Project Objectives
 
-Nutrition Guide 🥗: An interactive visual database of 25+ gym foods (Proteins, Carbs, Fats) with a popup modal showing detailed macro-nutrients.
+* **Empower Fitness Creators**: Providing trainers with a dedicated platform to build, publish, and monetize premium health content.
+* **Secure Content Delivery**: Implementing robust digital rights management (content locking) to ensure only verified subscribers access premium plans.
+* **Streamline User Discovery**: Creating an intuitive, personalized feed for users to discover and subscribe to fitness programs that match their goals.
 
-User Dashboard:
+---
 
-Track active subscriptions.
+## 🛠️ Technical Stack
 
-View "Following" list (Trainers).
+| Category | Technologies Used |
+| --- | --- |
+| **Frontend** | React.js (Hooks, Context API, Reusable Components) |
+| **Backend** | Node.js, Express.js (RESTful APIs, MVC Architecture) |
+| **Database** | MongoDB (NoSQL, Mongoose Relationships & Aggregations) |
+| **Security** | JWT (JSON Web Tokens), Bcrypt.js, Role-Based Access Control (RBAC) |
+| **Styling** | Modern CSS / UI Components for a responsive, dynamic layout |
 
-Update Profile details.
+---
 
-Trainer Dashboard:
+## 🚀 Core Features
 
-Analytics: View total earnings and subscriber count.
+### 🏋️ Trainer Dashboard & Creator Studio
 
-Plan Management: Create and delete workout plans.
+* **Dynamic Plan Management**: Full CRUD capabilities for trainers to create detailed workout splits and nutrition guides.
+* **Financial Analytics Engine**: Real-time revenue tracking dashboard utilizing complex MongoDB Aggregation pipelines to calculate total earnings and active subscriber metrics.
+* **Audience Building**: System tracks followers and engagement, allowing trainers to grow their digital fitness brand.
 
-Subscriber List: View a table of users who purchased plans.
+### 👤 User Experience & Marketplace
 
-⚙️ Backend (Server Logic)
-Secure API: Built with Express.js and protected via JWT (JSON Web Tokens).
+* **Smart Content Locking Mechanism**: Advanced backend logic that dynamically serves either a "locked" preview or the full detailed plan based on the user's real-time subscription status.
+* **Personalized Feed Generation**: A tailored exploration page displaying plans exclusively from trainers the user actively follows.
+* **Seamless Subscription Flow**: One-click subscription logic that updates database schemas and triggers instant UI state changes to unlock content.
 
-Database: MongoDB with Mongoose for structured data modeling (Users, Plans, Subscriptions).
+---
 
-Password Encryption: Uses bcryptjs for hashing passwords.
+## 📊 Business Impact
 
-Subscription Logic: Validates user purchases and manages access control for locked content.
+* **Creator Economy Ready**: Engineered to facilitate direct trainer-to-consumer digital sales.
+* **Scalable Architecture**: Built on the MVC pattern, ensuring the codebase remains maintainable as the platform scales to thousands of users.
+* **Data Integrity**: Eliminates duplicate subscriptions and protects intellectual property through secure backend validations.
 
-Smart Analytics: Aggregates data to calculate trainer revenue and follower counts dynamically.
+---
 
+## 💡 Key Learnings
 
-Component,Technology
-Frontend,"React.js, Vite, Tailwind CSS, React Router DOM, Axios"
-Backend,"Node.js, Express.js"
-Database,MongoDB (Mongoose ODM)
-Auth,"JWT (JSON Web Tokens), Bcrypt.js"
-Tools,"Postman, VS Code, Git"
+* **Advanced Authorization**: Mastered implementing Role-Based Access Control (Trainer vs. User) across both frontend routing and backend middleware.
+* **Database Optimization**: Utilized Mongoose `.populate()` and complex `$in` queries to efficiently fetch relational data across disjointed NoSQL collections.
+* **Complex State Synchronization**: Successfully managed the tricky UI/UX flow of toggling between locked and unlocked states without requiring page reloads.
 
+---
 
+## 🔮 Future Enhancements
 
-FitPlanHub/
-│
-├── backend/                # Server Side Code
-│   ├── config/             # DB Connection
-│   ├── models/             # Mongoose Schemas (User, Plan, Subscription)
-│   ├── routes/             # API Routes (Auth, Feed, Plans, Analytics)
-│   └── server.js           # Entry point
-│
-└── frontend/               # Client Side Code
-    ├── src/
-    │   ├── api/            # Axios instance
-    │   ├── components/     # Reusable UI (Navbar, PlanCard)
-    │   ├── pages/          # Full Pages (Login, Dashboard, Feed, Nutrition)
-    │   └── App.jsx         # Routing Logic
+* 💳 **Payment Gateway Integration**: Transitioning from mock subscriptions to real financial transactions using Stripe or Razorpay APIs.
+* 🤖 **AI-Powered Recommendations**: Suggesting customized workout plans based on user BMI, goals, and historical data.
+* 📱 **Cross-Platform Mobile App**: Porting the React frontend to React Native for native iOS and Android experiences.
 
+---
 
- Method,  Endpoint,                    Description
-POST,    /api/auth/signup,             Register a new user/trainer
-POST,    /api/auth/login,              Login and receive JWT
-GET,     /api/plans,                    Fetch all plans for the feed
-POST,    /api/plans,                    Create a new plan (Trainer only)
-POST,    /api/subscriptions,            Subscribe to a plan
-GET,     /api/analytics/trainer/stats,  Get trainer earnings & subscribers
-
-
-
-
-🎨 Frontend Documentation (Client Side)
-The frontend is built using React + Vite and styled with Tailwind CSS, featuring a modern "Glassmorphism" aesthetic and responsive design.
-
-1. Landing Page (Landing.jsx)
-The entry point of the application.
-
-Hero Section: Features a high-quality background with a dark gradient overlay and call-to-action buttons for "Start Free Trial" and "Login".
-
-Features Grid: Highlights key offerings like Custom Plans, Progress Tracking, and the Nutrition Guide.
-
-Navigation: Directs users to the Nutrition Guide or Authentication pages.
-
-2. Authentication Pages (Login.jsx & Signup.jsx)
-Split-Screen Design: A modern UI with high-quality fitness visuals on one side and a form on the other.
-
-Role Selection: During signup, users can choose to register as a "User" (to buy plans)qr a "Trainer" (to sell plans).
-
-Smart Redirection: Upon login, the app detects the role and redirects Trainers to the Dashboard and Users to the Explore Feed.
-
-3. Explore Feed (Feed.jsx)
-Plan Browsing: Displays a grid of all available fitness plans created by trainers.
-
-Plan Cards: Each card shows the plan title, price, duration, and trainer name. Clicking a card takes the user to the Plan Details page.
-
-4. Plan Details Page (PlanDetails.jsx)
-Content Locking System: This is a core feature. If a user is not subscribed, the detailed workout schedule is "Locked" 🔒.
-
-Subscription Logic: Includes a "Subscribe Now" button. Once clicked (and backend verification passes), the content unlocks, revealing the full workout routine.
-
-Trainer Attribution: Displays the name of the trainer who created the plan.
-
-5. User Profile (UserProfile.jsx)
-Personal Dashboard: Displays the user's name, email, and stats.
-
-Edit Profile: Users can update their display name directly from this page.
-
-My Subscriptions: A list of all plans the user has currently subscribed to.
-
-Following List: Shows a list of Trainers the user is currently following.
-
-6. Trainer Dashboard (TrainerDashboard.jsx)
-Analytics: Trainers can see their total earnings and subscriber counts.
-
-Create Plan: A form to upload new workout plans (Title, Price, Duration, Description).
-
-Subscriber List: A table view showing which users have purchased their plans.
-
-7. Nutrition Guide (NutritionGuide.jsx)
-Food Database: A visually rich grid displaying 25+ high-quality gym foods (Protein, Carbs, Healthy Fats).
-
-Interactive Modals: Clicking on a food item opens a popup displaying detailed macros (Protein, Carbs, Fats, Calories per 100g).
-
-⚙️ Backend Documentation (Server Side)
-The backend is built with Node.js & Express, using MongoDB for the database. It uses JWT (JSON Web Tokens) for secure authentication.
-
-Controllers logic 
-
-authController.js (Login/Signup)
-
-planController.js (Plans Logic)
-
-feedController.js (Explore Feed)
-
-followController.js (Follow/Unfollow)
-
-analyticsController.js (Trainer Stats)
-
-subscriptionController.js (Subscribe Logic)
-
-1. Authentication Routes (/api/auth)
-POST /signup: Registers a new user or trainer. Hashes passwords using bcryptjs for security.
-
-POST /login: Verifies credentials and issues a JWT Token. Returns the user's role (User/Trainer).
-
-GET /me: Fetches the current logged-in user's profile data.
-
-PUT /update-profile: Allows users to update their profile information (e.g., Name).
-
-2. Plan Routes (/api/plans)
-GET /: Fetches all available plans for the Feed.
-
-POST /: (Protected) Allows Trainers to create and save new workout plans to the database.
-
-GET /:id: Fetches the specific details of a single plan.
-
-3. Subscription Routes (/api/subscriptions)
-POST /: Handles the transaction when a user clicks "Subscribe". It links a User ID to a Plan ID in the database.
-
-GET /check/:planId: Checks if a specific user is already subscribed to a specific plan (used for the Content Lock logic).
-
-4. Feed & Analytics Routes
-/api/feed: Optimized routes for fetching the main explore feed data.
-
-/api/analytics (planCheckRoutes):
-
-Trainer Stats: Calculates total revenue generated by a trainer.
-
-Subscriber Count: Aggregates how many unique users have subscribed to a trainer's plans.
-
-5. Follow Routes (/api/follow)
-POST /toggle/:id: Allows a user to Follow or Unfollow a trainer.
-
-GET /following: Fetches the list of trainers a user is following.
-
-🛠️ Tech Stack
-Frontend: React, Vite, Tailwind CSS, Axios, React Router DOM.
-
-Backend: Node.js, Express.js.
-
-Database: MongoDB (Mongoose ODM).
-
-Authentication: JWT (JSON Web Tokens), Bcrypt.js
-
-
-
-How to Run Locally
-Clone the repository.
-
-Backend Setup:
-cd backend
-npm install
-npm run dev
-
-
-Frontend Setup:
-cd frontend
-npm install
-npm run dev
+Kya tum isme kisi specific feature ko aur zyada highlight karna chahte ho?
